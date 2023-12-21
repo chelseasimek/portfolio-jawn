@@ -6,7 +6,6 @@
   --background-color: #000;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 1);
   background-color: var(--background-color);
 
   font-synthesis: none;
@@ -16,13 +15,29 @@
 }
 
 a {
-  font-weight: 500;
-  /* color: #646cff; */
-  text-decoration: inherit;
+  background:
+    linear-gradient(
+      to right,
+      rgba(255,255,255, 0.35),
+      rgba(255,255,255, 0.35)
+    ),
+    linear-gradient(
+      to right,
+      rgba(255,87,224, 1),
+      /* rgba(143,246,255, 1), */
+      rgba(184,77,255, 1)
+  );
+  background-size: 100% 3px, 0 3px;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms;
 }
+
 a:hover {
-  color: #8ff6ff;
+  cursor: pointer;
+  background-size: 0 3px, 100% 3px;
 }
+
 
 body {
   margin: 0;

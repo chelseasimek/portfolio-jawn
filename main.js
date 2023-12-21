@@ -12,6 +12,7 @@ gradient1.initGradient("#gradient-canvas-1");
 const gradient2 = new Gradient();
 gradient2.initGradient("#gradient-canvas-2");
 
+
 const aboutScroll = gsap.timeline({
   scrollTrigger: {
     scroller: "#app",
@@ -28,34 +29,41 @@ const aboutScroll = gsap.timeline({
     gsap.set("#about-text-1", { opacity: 0, filter: "blur(30px)", y: -100, });
     gsap.set("#about-text-2", { opacity: 0, filter: "blur(30px)", y: 100, });
   },
-  onComplete: () => {
-    const textParams = {
-      opacity: 1.2, 
-      y: 0, 
-      filter: "blur(0px)",
-      duration: 0.5
-    }
-    // gsap.set("#gradientWrapper", { position: 'fixed' });
-    gsap.to("#about-text-1", textParams);
-    gsap.to("#about-text-2", {...textParams, delay: 0.1});
-  }
+  // onComplete: () => {
+  //   const textParams = {
+  //     opacity: 1.2, 
+  //     y: 0, 
+  //     filter: "blur(0px)",
+  //     duration: 0.5
+  //   }
+  //   gsap.to("#about-text-1", textParams);
+  //   gsap.to("#about-text-2", {...textParams, delay: 0.1});
+  // }
 });
 
+const textParams = {
+  opacity: 1.2, 
+  y: 0, 
+  filter: "blur(0px)",
+  duration: 0.5
+}
 aboutScroll.to("#gradientWrapper", {
   opacity: 1.2, 
   y: '-50%', 
   scale: 1,
   filter: "blur(0px)",
 })
+.to("#about-text-1", {...textParams, delay: 1}, 0)
+.to("#about-text-2", {...textParams, delay: 0.1});
 
 const jobScroll = gsap.timeline({
   scrollTrigger: {
     scroller: "#app",
     trigger: "#job",
-    start: `-=${window.innerHeight/2 - 150} center`,
-    end: `+=${window.innerHeight - 150}`,
+    start: `-=${window.innerHeight/2} center`,
+    end: `+=${window.innerHeight}`,
     scrub: true,
-    markers: true,
+    // markers: true,
     toggleActions: "restart pause reverse pause", 
   },
   onStart: () => {
@@ -76,9 +84,15 @@ const jobScroll = gsap.timeline({
   }
 }) 
 
-jobScroll.to('#gradientWrapper', {
-  y: (window.innerHeight/2), 
+jobScroll.to("#about-text-1", {
+  opacity: 0, filter: "blur(30px)", y: -100,
 })
+.to("#about-text-2", {
+  opacity: 0, filter: "blur(30px)", y: -100,
+}, 0)
+.to('#gradientWrapper', {
+  y: (window.innerHeight/2), 
+}, 0)
 
 // .to("#about-text-1", {
 //   opacity: 1.2, 
