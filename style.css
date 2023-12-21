@@ -1,0 +1,216 @@
+:root {
+  font-family: 'DM Sans', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.2;
+  font-weight: 400;
+
+  --background-color: #000;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 1);
+  background-color: var(--background-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  /* color: #646cff; */
+  text-decoration: inherit;
+}
+a:hover {
+  color: #8ff6ff;
+}
+
+body {
+  margin: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  padding: 2em;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+#gradient-canvas-1 {
+  position: absolute;
+  width:100%;
+  height:100%;
+  --gradient-color-1: #ff57e0; 
+  --gradient-color-2: #8ff6ff; 
+  --gradient-color-3: #ff4d82;  
+  --gradient-color-4: #b84dff;
+}
+#gradient-canvas-2 {
+  width: 55vw;
+  height: 40vh;
+  --gradient-color-1: #ff57e0; 
+  --gradient-color-2: #8ff6ff; 
+  --gradient-color-3: #ff4d82;  
+  --gradient-color-4: #b84dff;
+  transition: opacity 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);
+  transition-delay: 1s;
+}
+
+#gradient-box-wrapper {
+  opacity: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+h3 {
+  font-size: 2.8vw;
+  font-weight: 400;
+  margin: 0;
+}
+
+
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  scroll-snap-points-y: repeat(100vh);
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  background-color: var(--background-color);
+}
+
+#app .logo {
+  z-index: 3;
+  position: absolute;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 10%;
+  left: 10%;
+}
+
+
+#app section {
+  scroll-snap-align: start;
+  height: 100vh; 
+  position: relative;
+}
+
+#app #section-2 {
+  height: 100vh; 
+  position: relative;
+}
+
+#app section#intro h2 {
+  position: absolute;
+  top: 48%;
+  left: 40%;
+  font-size: 3.5vw;
+  font-weight: 400;
+  width: 50%;
+}
+
+#app section#intro .container {
+  height: 100vh; 
+  width: 100vw;
+}
+
+#app section .punch-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  scroll-snap-align: start;
+  height: 100vh; 
+  position: relative;
+  background-color: var(--background-color);
+  mix-blend-mode: multiply;
+}
+
+#app section .punch-text h1{
+  position: absolute;
+  font-size: 12vw;
+  top: 6%;
+  left: 10%;
+  line-height: .8;
+}
+
+#about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#about #about-text-block {
+  position: absolute;
+  top: 18%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 40%;
+  right: 15%;
+  mix-blend-mode: screen;
+  text-align: right;
+}
+
+#about h4 {
+  font-weight: 400;
+  font-size: 2vw;
+  width: 22%;
+  left: 20%;
+  top: 60%;
+  position: absolute;
+}
+
+#job h3 {
+  z-index: 1;
+  position: absolute;
+  width: 45%;
+}
+
+#job #job-things {
+  top: 30%;
+  left: 10%;
+}
+
+#job #job-current {
+  text-align: right;
+  bottom: 30%;
+  right: 10%;
+}
+
+
+@media (prefers-reduced-motion: no-preference) {
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
