@@ -4,9 +4,11 @@
   font-weight: 400;
 
   --background-color: #000;
+  --text-color: #F7FAFF;
 
   color-scheme: light dark;
   background-color: var(--background-color);
+  color: var(--text-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -30,6 +32,8 @@ a {
   background-size: 100% 3px, 0 3px;
   background-position: 100% 100%, 0 100%;
   background-repeat: no-repeat;
+  text-decoration: none;
+  color: var(--text-color);
   transition: background-size 400ms;
 }
 

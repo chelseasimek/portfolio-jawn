@@ -13,13 +13,38 @@ const gradient2 = new Gradient();
 gradient2.initGradient("#gradient-canvas-2");
 
 
+const introScroll = gsap.timeline({
+  scrollTrigger: {
+    scroller: "#app",
+    trigger: "#intro",
+    start: "center center",
+    end: `+=${window.innerHeight/2 - 50}`,
+    scrub: true,
+    markers: true,
+    toggleActions: "restart pause reverse pause", 
+  },
+  onStart: () => {
+  },
+  onComplete: () => {
+  }
+});
+
+introScroll.to("#intro-text", {
+  y: -500,
+  opacity: 0, 
+  filter: "blur(30px)",
+})
+.to("#intro-header", {
+  opacity: 0, 
+  filter: "blur(30px)",
+}, 0)
+
 const aboutScroll = gsap.timeline({
   scrollTrigger: {
     scroller: "#app",
     trigger: "#about",
     start: "+=50 center",
     end: `+=${window.innerHeight/2 - 50}`,
-    // start: "+=10",
     scrub: true,
     // markers: true,
     toggleActions: "restart pause reverse pause", 
@@ -29,32 +54,24 @@ const aboutScroll = gsap.timeline({
     gsap.set("#about-text-1", { opacity: 0, filter: "blur(30px)", y: -100, });
     gsap.set("#about-text-2", { opacity: 0, filter: "blur(30px)", y: 100, });
   },
-  // onComplete: () => {
-  //   const textParams = {
-  //     opacity: 1.2, 
-  //     y: 0, 
-  //     filter: "blur(0px)",
-  //     duration: 0.5
-  //   }
-  //   gsap.to("#about-text-1", textParams);
-  //   gsap.to("#about-text-2", {...textParams, delay: 0.1});
-  // }
+  onComplete: () => {
+    const textParams = {
+      opacity: 1.2, 
+      y: 0, 
+      filter: "blur(0px)",
+      duration: 0.5
+    }
+    gsap.to("#about-text-1", textParams);
+    gsap.to("#about-text-2", {...textParams, delay: 0.1});
+  }
 });
 
-const textParams = {
-  opacity: 1.2, 
-  y: 0, 
-  filter: "blur(0px)",
-  duration: 0.5
-}
 aboutScroll.to("#gradientWrapper", {
   opacity: 1.2, 
   y: '-50%', 
   scale: 1,
   filter: "blur(0px)",
 })
-.to("#about-text-1", {...textParams, delay: 1}, 0)
-.to("#about-text-2", {...textParams, delay: 0.1});
 
 const jobScroll = gsap.timeline({
   scrollTrigger: {
@@ -93,35 +110,3 @@ jobScroll.to("#about-text-1", {
 .to('#gradientWrapper', {
   y: (window.innerHeight/2), 
 }, 0)
-
-// .to("#about-text-1", {
-//   opacity: 1.2, 
-//   y: 0, 
-//   scale: 1
-// }, 0)
-// .to("#about-text-2", {
-//   opacity: 1.2, 
-//   y: 0, 
-//   scale: 1
-// }, 0)
-
-
-// document.querySelector('#app').innerHTML = `
-//   <div>
-//     <a href="https://vitejs.dev" target="_blank">
-//       <img src="${viteLogo}" class="logo" alt="Vite logo" />
-//     </a>
-//     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-//       <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-//     </a>
-//     <h1>Hello Vite!</h1>
-//     <div class="card">
-//       <button id="counter" type="button"></button>
-//     </div>
-//     <p class="read-the-docs">
-//       Click on the Vite logo to learn more
-//     </p>
-//   </div>
-// `
-
-// setupCounter(document.querySelector('#counter'))
