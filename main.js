@@ -1,9 +1,10 @@
 import './style.css'
-// import gsap from 'gsap'
-// import { ScrollTrigger } from 'gsap/ScrollTrigger'; 
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'; 
+import { Timeline } from 'gsap/gsap-core';
 import { Gradient } from "whatamesh";
 
-// gsap.registerPlugin(ScrollTrigger);  
+gsap.registerPlugin(ScrollTrigger);  
 
 const gradient1 = new Gradient();
 gradient1.initGradient("#gradient-canvas-1");
@@ -11,55 +12,85 @@ gradient1.initGradient("#gradient-canvas-1");
 const gradient2 = new Gradient();
 gradient2.initGradient("#gradient-canvas-2");
 
-elementInViewport('intro');
-elementInViewport('about');
-elementInViewport('job');
-
-
-function elementInViewport(elementId) {
-
-    var el = document.getElementById(elementId);
-
-    const observer = new window.IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setAnimationState(elementId);
-        return;
-      }
-      // console.log(elementId, 'LEAVE')
-    }, {
-      root: null,
-      threshold: 0.1, // set offset 0.1 means trigger if atleast 10% of element in viewport
-    })
-    
-    observer.observe(el);
-}
-
-function setAnimationState(elementId) {
-  console.log(elementId);
-  switch(elementId) {
-    case 'intro': 
-      document.getElementById('gradient-box-wrapper').style.opacity = 0;
-    case 'about': 
-      document.getElementById('gradient-box-wrapper').style.opacity = 1;
-    case 'job': 
-      document.getElementById('gradient-box-wrapper').style.opacity = 1;
+const aboutScroll = gsap.timeline({
+  scrollTrigger: {
+    scroller: "#app",
+    trigger: "#about",
+    start: "+=50 center",
+    end: `+=${window.innerHeight/2 - 50}`,
+    // start: "+=10",
+    scrub: true,
+    // markers: true,
+    toggleActions: "restart pause reverse pause", 
+  },
+  onStart: () => {
+    gsap.set("#gradientWrapper", { opacity: 0, filter: "blur(30px)", y: -300, scale: 0.8 });
+    gsap.set("#about-text-1", { opacity: 0, filter: "blur(30px)", y: -100, });
+    gsap.set("#about-text-2", { opacity: 0, filter: "blur(30px)", y: 100, });
+  },
+  onComplete: () => {
+    const textParams = {
+      opacity: 1.2, 
+      y: 0, 
+      filter: "blur(0px)",
+      duration: 0.5
+    }
+    // gsap.set("#gradientWrapper", { position: 'fixed' });
+    gsap.to("#about-text-1", textParams);
+    gsap.to("#about-text-2", {...textParams, delay: 0.1});
   }
-}
+});
 
-// gsap.to("#gradient-box-wrapper", 
-//     {
-//       scrollTrigger: {
-//         scroller: "#section-2",
-//         trigger: "#about",
-//         // start: "+=10",
-//         markers: true,
-//         scrub: true,
-//         toggleActions: "restart pause reverse pause"
-//       },
-//       opacity: 1, 
-//       duration: 2
-//     }
-// )
+aboutScroll.to("#gradientWrapper", {
+  opacity: 1.2, 
+  y: '-50%', 
+  scale: 1,
+  filter: "blur(0px)",
+})
+
+const jobScroll = gsap.timeline({
+  scrollTrigger: {
+    scroller: "#app",
+    trigger: "#job",
+    start: `-=${window.innerHeight/2 - 150} center`,
+    end: `+=${window.innerHeight - 150}`,
+    scrub: true,
+    markers: true,
+    toggleActions: "restart pause reverse pause", 
+  },
+  onStart: () => {
+    // gsap.set("#gradientWrapper", { opacity: 0, filter: "blur(30px)", y: -300, scale: 0.8 });
+    gsap.set("#job-text-1", { opacity: 0, filter: "blur(30px)", y: -100, });
+    gsap.set("#job-text-2", { opacity: 0, filter: "blur(30px)", y: 100, });
+  },
+
+  onComplete: () => {
+    const textParams = {
+      opacity: 1.2, 
+      y: 0, 
+      filter: "blur(0px)",
+      duration: 0.5
+    }
+    gsap.to("#job-text-1", textParams);
+    gsap.to("#job-text-2", {...textParams, delay: 0.1});
+  }
+}) 
+
+jobScroll.to('#gradientWrapper', {
+  y: (window.innerHeight/2), 
+})
+
+// .to("#about-text-1", {
+//   opacity: 1.2, 
+//   y: 0, 
+//   scale: 1
+// }, 0)
+// .to("#about-text-2", {
+//   opacity: 1.2, 
+//   y: 0, 
+//   scale: 1
+// }, 0)
+
 
 // document.querySelector('#app').innerHTML = `
 //   <div>
