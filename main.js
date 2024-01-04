@@ -18,19 +18,15 @@ const introScroll = gsap.timeline({
     scroller: "#app",
     trigger: "#intro",
     start: "center center",
-    end: `+=${window.innerHeight/2 - 50}`,
+    end: `+=${window.innerHeight/2}`,
     scrub: true,
-    markers: true,
+    // markers: true,
     toggleActions: "restart pause reverse pause", 
-  },
-  onStart: () => {
-  },
-  onComplete: () => {
   }
 });
 
 introScroll.to("#intro-text", {
-  y: -500,
+  y: -200,
   opacity: 0, 
   filter: "blur(30px)",
 })
@@ -43,35 +39,28 @@ const aboutScroll = gsap.timeline({
   scrollTrigger: {
     scroller: "#app",
     trigger: "#about",
-    start: "+=50 center",
-    end: `+=${window.innerHeight/2 - 50}`,
+    start: "top center",
+    end: `+=${window.innerHeight/2}`,
     scrub: true,
     // markers: true,
     toggleActions: "restart pause reverse pause", 
   },
   onStart: () => {
-    gsap.set("#gradientWrapper", { opacity: 0, filter: "blur(30px)", y: -300, scale: 0.8 });
-    gsap.set("#about-text-1", { opacity: 0, filter: "blur(30px)", y: -100, });
-    gsap.set("#about-text-2", { opacity: 0, filter: "blur(30px)", y: 100, });
+    gsap.set("#gradientWrapper", { opacity: 0, filter: "blur(30px)", yPercent: -20, scale: 0.9 });
+    gsap.set("#about-text-1", { opacity: 0, filter: "blur(30px)", y: -200});
+    gsap.set("#about-text-2", { opacity: 0, filter: "blur(30px)", y: -200 });
   },
-  onComplete: () => {
-    const textParams = {
-      opacity: 1.2, 
-      y: 0, 
-      filter: "blur(0px)",
-      duration: 0.5
-    }
-    gsap.to("#about-text-1", textParams);
-    gsap.to("#about-text-2", {...textParams, delay: 0.1});
-  }
 });
 
 aboutScroll.to("#gradientWrapper", {
-  opacity: 1.2, 
-  y: '-50%', 
+  opacity: 1, 
+  yPercent: -50, 
+  y: 0,
   scale: 1,
   filter: "blur(0px)",
-})
+}, 0)
+.to("#about-text-1", { filter: "blur(0px)", opacity: 1, y: 0}, 0)
+.to("#about-text-2", { filter: "blur(0px)", opacity: 1, y: 0}, 0)
 
 const jobScroll = gsap.timeline({
   scrollTrigger: {
@@ -80,33 +69,20 @@ const jobScroll = gsap.timeline({
     start: `-=${window.innerHeight/2} center`,
     end: `+=${window.innerHeight}`,
     scrub: true,
-    // markers: true,
     toggleActions: "restart pause reverse pause", 
   },
   onStart: () => {
-    // gsap.set("#gradientWrapper", { opacity: 0, filter: "blur(30px)", y: -300, scale: 0.8 });
-    gsap.set("#job-text-1", { opacity: 0, filter: "blur(30px)", y: -100, });
-    gsap.set("#job-text-2", { opacity: 0, filter: "blur(30px)", y: 100, });
+    gsap.set("#job-text-1", { opacity: 0, filter: "blur(30px)", y: -200, });
+    gsap.set("#job-text-2", { opacity: 0, filter: "blur(30px)", y: -200, });
   },
-
-  onComplete: () => {
-    const textParams = {
-      opacity: 1.2, 
-      y: 0, 
-      filter: "blur(0px)",
-      duration: 0.5
-    }
-    gsap.to("#job-text-1", textParams);
-    gsap.to("#job-text-2", {...textParams, delay: 0.1});
-  }
 }) 
 
+
 jobScroll.to("#about-text-1", {
-  opacity: 0, filter: "blur(30px)", y: -100,
-})
+  opacity: 0, filter: "blur(30px)",
+}, 0)
 .to("#about-text-2", {
-  opacity: 0, filter: "blur(30px)", y: -100,
+  opacity: 0, filter: "blur(30px)"
 }, 0)
-.to('#gradientWrapper', {
-  y: (window.innerHeight/2), 
-}, 0)
+.to("#job-text-1", { filter: "blur(0px)", opacity: 1, y: 0}, 1)
+.to("#job-text-2", { filter: "blur(0px)", opacity: 1, y: 0}, 1)
