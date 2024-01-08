@@ -25,6 +25,7 @@ a {
     ),
     linear-gradient(
       to right,
+      #FFA654,
       rgba(255,87,224, 1),
       /* rgba(143,246,255, 1), */
       rgba(184,77,255, 1)
@@ -79,7 +80,7 @@ button:focus-visible {
   height:100%;
   --gradient-color-1: #ff57e0; 
   --gradient-color-2: #8ff6ff; 
-  --gradient-color-3: #ff4d82;  
+  --gradient-color-3: #FFA654;  
   --gradient-color-4: #b84dff;
 }
 #gradient-canvas-2 {
@@ -100,6 +101,7 @@ button:focus-visible {
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
+  pointer-events: none;
 }
 
 h3 {
@@ -165,7 +167,7 @@ h3 {
 
 #app section .punch-text h1{
   position: absolute;
-  font-size: 12vw;
+  font-size: clamp(4vw, 12vw, 12vw);
   top: 6%;
   left: 10%;
   line-height: .8;
