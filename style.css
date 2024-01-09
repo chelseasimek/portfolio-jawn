@@ -51,17 +51,19 @@ body {
   justify-content: center;
 }
 
-.card {
-  padding: 2em;
-}
-
-button {
+#frame {
   z-index: 3;
   position: absolute;
-  bottom: 10%;
-  right: 10%;
+  height: 80vh;
+  width: 80vw;
+  pointer-events: none;
+  font-family: 'DM Mono', monospace;
+  top: 10%;
+  left: 10%;
+}
+
+#frame button {
   border-radius: 60px;
-  border: 3px solid transparent;
   height: 100px;
   width: 100px;
   font-size: 0.8vw;
@@ -71,9 +73,13 @@ button {
   color: var(--background-color);
   cursor: pointer;
   transition: transform 0.25s;
+
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
-button span.btnText {
+#frame button span.btnText {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -82,13 +88,42 @@ button span.btnText {
   opacity: 0;
 }
 
-button:hover {
+#frame button:hover {
   transform: scale(1.1);
 }
 /* button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 } */
+
+#frame p {
+  font-size: 18px;
+  margin: 0;
+  display: flex;
+}
+
+#frame #copyright {
+  position: absolute;
+  transform: rotate(-90deg);
+  transform-origin: top left;
+  bottom: 0;
+  left: 0;
+}
+
+#frame #time {
+  position: absolute;
+  transform: translateY(175px) rotate(90deg);
+  transform-origin: top right;
+  top: 0;
+  right: 0;
+}
+
+#frame #logo {
+  top: 0;
+  left: 0;
+  height: 100px;
+  width: 100px;
+}
 
 #gradient-canvas-1 {
   position: absolute;
@@ -135,16 +170,6 @@ h3 {
   background-color: var(--background-color);
 }
 
-#app .logo {
-  z-index: 3;
-  position: absolute;
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
-  top: 10%;
-  left: 10%;
-}
-
-
 #app section {
   scroll-snap-align: start;
   height: 100vh; 
@@ -159,7 +184,7 @@ h3 {
 #app section#intro h2 {
   position: absolute;
   top: 48%;
-  left: 40%;
+  right: 15%;
   font-size: 3.5vw;
   font-weight: 400;
   width: 50%;
@@ -185,7 +210,7 @@ h3 {
   position: absolute;
   font-size: clamp(4vw, 12vw, 12vw);
   top: 6%;
-  left: 10%;
+  left: 15%;
   line-height: .8;
   position: fixed;
   pointer-events: none;
@@ -221,7 +246,7 @@ h3 {
   position: absolute;
   width: 45%;
   top: 20%;
-  left: 10%;
+  left: 15%;
   display: flex;
   flex-direction: column;
   gap: 45px;
@@ -230,7 +255,7 @@ h3 {
 #job #job-text-2 {
   position: absolute;
   bottom: 20%;
-  right: 18%;
+  right: 15%;
   font-weight: 400;
   font-size: 1.3vw;
   width: 20%;

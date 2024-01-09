@@ -12,8 +12,12 @@
   <body>
     <div id="app">
       <div id="loader"></div>
-      <img src="./public/cs-logo.svg" alt="logo" class="logo">
-      <button id="scrollButton"><img class="btnIcon" src="./public/arrow.svg"/><span class="btnText">Let's connect</span></button>
+      <div id="frame"> 
+        <img src="./public/cs-logo.svg" alt="logo" id="logo">
+        <p id="copyright"></p>
+        <p id="time"></p>
+        <button id="scrollButton"><img class="btnIcon" src="./public/arrow.svg"/><span class="btnText">Let's connect</span></button>
+      </div>
       <section id="intro">
         <div class="container">
           <canvas id="gradient-canvas-1" data-js-darken-top data-transition-in></canvas>
@@ -35,7 +39,7 @@
       </section>
       <section id="job">
         <div id="job-text-1">
-          <h3>I build <b>prototypes</b>, create <b>design tools</b> & scale <b>design systems</b>.</a></h3>
+          <h3>I build prototypes, create design tools & scale design systems.</a></h3>
           <h3>Currently a <a href="https://www.linkedin.com/in/chelseasimek/" target="_blank">Principal UX Engineering Manager</a> @ <a href="https://microsoft.design/" target="_blank">Microsoft</a>.</h3>
         </div>
         <div id="job-text-2">
