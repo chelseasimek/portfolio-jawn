@@ -157,7 +157,7 @@ button:focus-visible {
 }
 
 h3 {
-  font-size: 2.8vw;
+  font-size: clamp(24px, 2.8vw, 150px);
   font-weight: 400;
   margin: 0;
 }
@@ -215,6 +215,7 @@ h3 {
   line-height: .8;
   position: fixed;
   pointer-events: none;
+  color: #fff;
 }
 
 #about {
@@ -230,13 +231,13 @@ h3 {
   flex-direction: column;
   gap: 45px;
   width: 40%;
-  right: 15%;
+  right: 18%;
   text-align: right;
 }
 
 #about #about-text-2 {
   font-weight: 400;
-  font-size: 2vw;
+  font-size: clamp(18px, 2vw, 120px);
   width: 22%;
   left: 20%;
   top: 60%;
