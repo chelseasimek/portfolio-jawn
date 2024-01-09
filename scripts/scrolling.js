@@ -81,16 +81,15 @@ const ScrollTimeline = {
           .to("#job-text-2", { filter: "blur(0px)", opacity: 1, y: 0}, 1)
           .to ('.btnIcon', {
             opacity: 0
-          })
+          }, 1)
           .to ('#scrollButton', {
             width: 300,
             ease: 'power1.out',
             duration: 0.8
-          })
+          }, 1)
           .to ('.btnText', {
             opacity: 1,
-            delay: 0.5
-          })
+          }, 1)
     }
 }
 

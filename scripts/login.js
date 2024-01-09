@@ -1,4 +1,4 @@
-document.getElementById("submit").addEventListener("click", submitPassword);
+document.getElementById("login").addEventListener("submit", submitPassword);
 
 function submitPassword(e) {
     console.log(e);

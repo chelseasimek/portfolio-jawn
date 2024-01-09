@@ -6,5 +6,3 @@ import { Frame } from './scripts/frame';
 Frame.create();
 Gradients.init();
 ScrollTimeline.init();
-
-
