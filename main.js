@@ -1,4 +1,3 @@
-import './style.css'
 import { Gradients } from './scripts/gradient'
 import { ScrollTimeline } from './scripts/scrolling';
 import { Frame } from './scripts/frame';

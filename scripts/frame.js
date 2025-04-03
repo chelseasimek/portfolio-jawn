@@ -6,8 +6,8 @@ const Frame = {
         
         
         function updateTime() {
-          const currentLocale = new Date().toLocaleString('en-US', {hour12: true, timeZone: 'America/New_York' });
-          document.getElementById("time").innerHTML = `PHL &#8212 ${currentLocale.split(', ')[1]}`;
+          const currentLocale = new Date().toLocaleString('en-US', {hour12: true, timeZone: 'America/Denver' });
+          document.getElementById("time").innerHTML = `DENVER &#8212 ${currentLocale.split(', ')[1]}`;
           setTimeout(updateTime, 100);
         }
 
